@@ -102,13 +102,15 @@
             padding-bottom: 0.85rem; /* More padding */
             margin-bottom: 2.5rem; /* More space below title */
             font-size: 3rem; /* Larger title */
+            text-align: center; /* Center the text of the title itself */
+            display: inline-block; /* Allow the underline to match text width */
         }
         .section-title::after {
             content: '';
             position: absolute;
-            left: 0;
+            left: 0; /* Align to the left of the inline-block parent */
+            right: 0; /* Extend to the right of the inline-block parent */
             bottom: 0;
-            width: 120px; /* Longer underline */
             height: 6px; /* Thicker underline */
             background-color: #00FF00; /* Pure Neon Green */
             border-radius: 9999px;
@@ -213,7 +215,8 @@
                     LinkedIn
                 </a>
             </div>
-        </section>
+        </div>
+    </header>
 
     <!-- Main Content -->
     <main class="container mx-auto px-8 py-24 relative z-10">
@@ -439,7 +442,7 @@
                     console.log("Attempting to call Gemini API. Retry:", retries);
                     response = await fetch(apiUrl, {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: { 'Content-Type': 'application/icon' },
                         body: JSON.stringify(payload)
                     });
 
