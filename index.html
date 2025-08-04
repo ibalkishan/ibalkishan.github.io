@@ -386,8 +386,10 @@
             let chatHistory = [];
             chatHistory.push({ role: "user", parts: [{ text: prompt }] });
             const payload = { contents: chatHistory };
-            const apiKey = ""; // Canvas will provide this API key at runtime
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            // Your provided API key
+            const apiKey = "AIzaSyC6y62zq2EG8WZX8PTf5fXm20UBDJNISFQ"; 
+            // Updated API URL to use gemini-2.0-flash as per the curl example
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
             let response;
             let retries = 0;
