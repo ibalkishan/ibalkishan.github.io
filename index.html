@@ -3,44 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Balkishan Singh - RPA & AI Expert</title>
+    <title>Balkishan Singh - Professional AI & RPA Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #1A202C; /* Deep Dark Blue background */
-            color: #CBD5E0; /* Light Grey for general text */
+            background-color: #0C101C; /* Very Dark Blue-Grey (almost black) */
+            color: #E0E6EF; /* Very Light Blue-Grey for general text */
             line-height: 1.6;
             overflow-x: hidden; /* Prevent horizontal scroll */
+            position: relative; /* Needed for background layering */
+            min-height: 100vh; /* Ensure body takes full height for background */
         }
+
+        /* Background Robot Image and Overlay */
+        .background-robot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* A more abstract, tech-inspired robot background placeholder */
+            background-image: url('https://placehold.co/1920x1080/0C101C/00FF00?text=AI+Robot+Circuitry');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -2; /* Behind content and overlay */
+            opacity: 0.3; /* Make it subtle */
+        }
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* More opaque black overlay for better text contrast */
+            z-index: -1; /* Between content and robot image */
+        }
+
+        /* Section Background Colors */
         .section-bg-dark-1 {
-            background-color: #1A202C; /* Same as body for blending */
+            background-color: #1A202C; /* Dark Blue-Grey */
         }
         .section-bg-dark-2 {
-            background-color: #2D3748; /* Slightly lighter dark blue-grey */
+            background-color: #2D3748; /* Mid-Dark Blue-Grey for contrast */
         }
+
+        /* Text Colors */
         .text-neon-green {
-            color: #32CD32; /* Neon Green */
+            color: #00FF00; /* Pure Neon Green for section titles/accents */
         }
         .text-electric-blue {
             color: #00FFFF; /* Bright Electric Blue for the main name */
         }
-        .bg-neon-green-dark {
-            background-color: #1a6d1a; /* Darker green for skill tags */
+        .text-light-slate {
+            color: #F1F5F9; /* Very light slate for the main name */
+        }
+
+        /* Button/Link/Skill Tag Base Colors */
+        .bg-neon-green-accent {
+            background-color: #00FF00; /* Pure Neon Green */
+        }
+        .text-dark-blue {
+            color: #0C101C; /* Text color for elements with neon green background */
         }
         .border-neon-green {
-            border-color: #32CD32; /* Neon Green border */
+            border-color: #00FF00; /* Pure Neon Green border */
         }
         .hover\:bg-neon-green-light:hover {
-            background-color: #4CAF50; /* A slightly lighter green for hover */
+            background-color: #39FF14; /* Slightly lighter neon green on hover */
             color: #000; /* Black text on hover for contrast */
         }
-        .main-heading-glow {
-            /* Sharp, subtle glow effect for the main name */
-            text-shadow: 0 0 8px #00FFFF; /* Single, sharp shadow */
-        }
+
+        /* Main Heading - No Glow for Sharpness */
+        /* .main-heading-glow is removed to eliminate blur */
+
+        /* Section Title Underline */
         .section-title {
             position: relative;
             padding-bottom: 0.5rem;
@@ -51,28 +91,31 @@
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 60px;
-            height: 3px;
-            background-color: #32CD32;
+            width: 80px; /* Slightly longer underline */
+            height: 4px; /* Thicker underline */
+            background-color: #00FF00; /* Pure Neon Green */
             border-radius: 9999px;
         }
-        /* Custom scrollbar for neon theme */
+
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
         ::-webkit-scrollbar-track {
-            background: #1A202C; /* Match new background */
+            background: #0C101C; /* Match body background */
         }
         ::-webkit-scrollbar-thumb {
-            background: #32CD32;
+            background: #00FF00; /* Pure Neon Green */
             border-radius: 5px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #4CAF50;
+            background: #39FF14;
         }
+
+        /* Spinner for AI Assistant */
         .spinner {
             border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid #32CD32;
+            border-top: 4px solid #00FF00; /* Neon Green spinner */
             border-radius: 50%;
             width: 24px;
             height: 24px;
@@ -82,43 +125,52 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        /* Styling for list items to make them more attractive */
+
+        /* List Item Hover Effect */
         .list-item-glow {
             transition: color 0.3s ease;
         }
         .list-item-glow:hover {
-            color: #4CAF50; /* Lighter green on hover */
+            color: #00FF00; /* Pure Neon Green on hover */
         }
 
-        /* New styles for skills highlighting on hover */
+        /* Skill Tags */
         .skill-tag {
             transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer; /* Indicate clickable */
+            cursor: pointer;
+            background-color: #3A475C; /* Darker Blue-Grey default */
+            color: #E0E6EF; /* Light text default */
+            padding: 0.75rem 1.25rem; /* Slightly larger tags */
+            border-radius: 9999px; /* Fully rounded */
         }
-        .skill-tag:hover { /* Apply highlight styles on hover */
+        .skill-tag:hover {
             background-color: #00FFFF; /* Bright Electric Blue */
-            color: #000000; /* Black text for contrast */
-            box-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF; /* Glow effect */
+            color: #0C101C; /* Very Dark Blue-Grey text for contrast */
+            box-shadow: 0 0 15px #00FFFF, 0 0 30px #00FFFF; /* Stronger glow */
         }
     </style>
 </head>
 <body class="antialiased">
 
+    <!-- Background Robot Image and Overlay -->
+    <div class="background-robot"></div>
+    <div class="background-overlay"></div>
+
     <!-- Header Section -->
-    <header class="py-8 md:py-16 text-center section-bg-dark-1 border-b border-neon-green">
+    <header class="py-12 md:py-20 text-center relative z-10 border-b border-neon-green section-bg-dark-1 bg-opacity-70">
         <div class="container mx-auto px-4">
             <!-- Profile Picture -->
-            <img src="ProfilePic.jpg" alt="Balkishan Singh Profile Picture" class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-neon-green shadow-lg object-cover">
+            <img src="ProfilePic.jpg" alt="Balkishan Singh Profile Picture" class="w-56 h-56 rounded-full mx-auto mb-8 border-4 border-electric-blue shadow-xl object-cover">
 
-            <h1 class="text-4xl md:text-6xl font-extrabold text-electric-blue main-heading-glow mb-2">Balkishan Singh</h1>
-            <p class="text-xl md:text-2xl font-light text-gray-300">Helping Businesses Automate & Optimize Processes | Sr. RPA Developer | AI Enthusiast</p>
-            <div class="mt-6 flex justify-center space-x-4">
-                <a href="mailto:balkishan_singh@outlook.com" class="inline-flex items-center px-6 py-3 border border-neon-green rounded-full text-sm font-medium text-neon-green hover:bg-neon-green-light hover:text-black transition-all duration-300 shadow-lg">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 13h9a2 2 0 002-2V7a2 2 0 00-2-2H3a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-light-slate mb-3">Balkishan Singh</h1>
+            <p class="text-xl md:text-3xl font-light text-slate-300">Helping Businesses Automate & Optimize Processes | Sr. RPA Developer | AI Enthusiast</p>
+            <div class="mt-8 flex justify-center space-x-6">
+                <a href="mailto:balkishan_singh@outlook.com" class="inline-flex items-center px-8 py-4 border border-neon-green rounded-full text-lg font-medium text-neon-green hover:bg-neon-green-accent hover:text-dark-blue transition-all duration-300 shadow-xl">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 13h9a2 2 0 002-2V7a2 2 0 00-2-2H3a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     Email Me
                 </a>
-                <a href="https://www.linkedin.com/in/ibalkishan" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 border border-neon-green rounded-full text-sm font-medium text-neon-green hover:bg-neon-green-light hover:text-black transition-all duration-300 shadow-lg">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                <a href="https://www.linkedin.com/in/ibalkishan" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-4 border border-neon-green rounded-full text-lg font-medium text-neon-green hover:bg-neon-green-accent hover:text-dark-blue transition-all duration-300 shadow-xl">
+                    <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
                     LinkedIn
                 </a>
             </div>
@@ -126,42 +178,42 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-12">
+    <main class="container mx-auto px-4 py-16 relative z-10">
 
         <!-- Summary Section -->
-        <section id="summary" class="mb-16 p-8 section-bg-dark-2 rounded-lg shadow-xl border border-neon-green">
-            <h2 class="text-3xl font-bold text-neon-green section-title mb-6">About Me</h2>
-            <p class="text-lg text-gray-300 mb-4">
-                I am an AI & Automation Leader with 6+ years of delivering impactful RPA solutions that simplify business processes, cut costs, and accelerate digital transformation. My expertise is in Automation Anywhere, Microsoft Power Automate, and UiPath. I have led 40+ automation projects for clients across <span class="text-neon-green font-semibold">healthcare, banking, finance, and manufacturing</span>, achieving up to <span class="text-neon-green font-semibold">50% efficiency gains</span>.
+        <section id="summary" class="mb-20 p-10 section-bg-dark-2 rounded-xl shadow-2xl border border-neon-green">
+            <h2 class="text-4xl font-bold text-neon-green section-title mb-8">About Me</h2>
+            <p class="text-xl text-slate-200 mb-6">
+                I am an <span class="text-neon-green font-semibold">AI & Automation Leader</span> with <span class="text-neon-green font-semibold">6+ years</span> of delivering impactful RPA solutions that simplify business processes, cut costs, and accelerate digital transformation. My expertise is in <span class="text-neon-green font-semibold">Automation Anywhere, Microsoft Power Automate, and UiPath</span>. I have led <span class="text-neon-green font-semibold">40+ automation projects</span> for clients across <span class="text-neon-green font-semibold">healthcare, banking, finance, and manufacturing</span>, achieving up to <span class="text-neon-green font-semibold">50% efficiency gains</span>.
             </p>
-            <p class="text-lg text-gray-300 mb-4">
-                Currently based in <span class="text-neon-green font-semibold">Dubai</span>, I specialize in designing automation strategies, building scalable bots, and integrating RPA with APIs, databases, and enterprise systems to ensure seamless workflows. My passion lies in combining AI technologies with process automation to solve real-world business challenges.
+            <p class="text-xl text-slate-200 mb-6">
+                Currently based in <span class="text-neon-green font-semibold">Dubai</span>, I specialize in designing automation strategies, building scalable bots, and integrating RPA with APIs, databases, and enterprise systems to ensure seamless workflows. My passion lies in combining <span class="text-neon-green font-semibold">AI technologies with process automation</span> to solve real-world business challenges.
             </p>
-            <p class="text-lg text-gray-300">
+            <p class="text-xl text-slate-200">
                 Key clients I have worked with include <span class="text-neon-green font-semibold">National Bonds, Al Futtaim, Aster, Medcare, and Zulekha Hospital</span>, where I have led automation initiatives from discovery to deployment. I am also certified in <span class="text-neon-green font-semibold">Automation Anywhere (Master), Microsoft Power Automate RPA Developer Associate, and UiPath Advanced Developer</span>.
             </p>
         </section>
 
         <!-- AI Assistant Section -->
-        <section id="ai-assistant" class="mb-16 p-8 section-bg-dark-1 rounded-lg shadow-xl border border-neon-green">
-            <h2 class="text-3xl font-bold text-neon-green section-title mb-6">✨ AI Profile Assistant ✨</h2>
-            <p class="text-lg text-gray-300 mb-4">Ask me anything about Balkishan's professional profile, and I'll do my best to answer based on the information provided here!</p>
-            <div class="flex flex-col md:flex-row gap-4 mb-4">
-                <input type="text" id="questionInput" placeholder="e.g., What is his experience with healthcare automation?" class="flex-grow p-3 rounded-md bg-gray-800 text-gray-100 border border-neon-green focus:outline-none focus:ring-2 focus:ring-neon-green placeholder-gray-500">
-                <button id="askButton" class="px-6 py-3 bg-neon-green-dark rounded-full text-black font-semibold hover:bg-neon-green-light transition-all duration-300 flex items-center justify-center">
+        <section id="ai-assistant" class="mb-20 p-10 section-bg-dark-1 rounded-xl shadow-2xl border border-neon-green">
+            <h2 class="text-4xl font-bold text-neon-green section-title mb-8">✨ AI Profile Assistant ✨</h2>
+            <p class="text-xl text-slate-200 mb-6">Ask me anything about Balkishan's professional profile, and I'll do my best to answer based on the information provided here!</p>
+            <div class="flex flex-col md:flex-row gap-6 mb-6">
+                <input type="text" id="questionInput" placeholder="e.g., What is his experience with healthcare automation?" class="flex-grow p-4 rounded-lg bg-gray-800 text-gray-100 border border-neon-green focus:outline-none focus:ring-2 focus:ring-electric-blue placeholder-gray-500 text-lg">
+                <button id="askButton" class="px-8 py-4 bg-neon-green-accent rounded-full text-dark-blue font-semibold hover:bg-neon-green-light transition-all duration-300 shadow-xl flex items-center justify-center text-lg">
                     Ask AI
-                    <span id="loadingSpinner" class="spinner ml-2 hidden"></span>
+                    <span id="loadingSpinner" class="spinner ml-3 hidden"></span>
                 </button>
             </div>
-            <div id="answerOutput" class="p-4 bg-gray-900 rounded-md border border-neon-green text-gray-200 min-h-[80px] flex items-center justify-center text-center italic">
+            <div id="answerOutput" class="p-6 bg-gray-900 rounded-lg border border-neon-green text-slate-200 min-h-[120px] flex items-center justify-center text-center italic text-lg">
                 Your AI-generated answer will appear here.
             </div>
         </section>
 
         <!-- Key Focus Areas -->
-        <section id="focus-areas" class="mb-16 p-8 section-bg-dark-2 rounded-lg shadow-xl border border-neon-green">
-            <h2 class="text-3xl font-bold text-neon-green section-title mb-6">Key Focus Areas</h2>
-            <ul class="list-disc list-inside text-lg text-gray-300 space-y-2">
+        <section id="focus-areas" class="mb-20 p-10 section-bg-dark-2 rounded-xl shadow-2xl border border-neon-green">
+            <h2 class="text-4xl font-bold text-neon-green section-title mb-8">Key Focus Areas</h2>
+            <ul class="list-disc list-inside text-xl text-slate-200 space-y-3">
                 <li class="list-item-glow"><span class="text-neon-green">Intelligent Automation</span> & AI-Driven Process Optimization</li>
                 <li class="list-item-glow">Scalable <span class="text-neon-green">RPA Solutions</span></li>
                 <li class="list-item-glow">Business Process Re-engineering & <span class="text-neon-green">Cost Reduction</span></li>
@@ -171,95 +223,95 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="mb-16 p-8 section-bg-dark-1 rounded-lg shadow-xl border border-neon-green">
-            <h2 class="text-3xl font-bold text-neon-green section-title mb-6">Skills</h2>
-            <div id="skillTagsContainer" class="flex flex-wrap gap-3">
-                <span class="px-4 py-2 bg-neon-green-dark rounded-full text-sm font-medium text-black shadow-md skill-tag">Artificial Intelligence (AI)</span>
-                <span class="px-4 py-2 bg-neon-green-dark rounded-full text-sm font-medium text-black shadow-md skill-tag">Workload Management</span>
-                <span class="px-4 py-2 bg-neon-green-dark rounded-full text-sm font-medium text-black shadow-md skill-tag">Web Services API</span>
-                <span class="px-4 py-2 bg-neon-green-dark rounded-full text-sm font-medium text-black shadow-md skill-tag">Automation Anywhere</span>
-                <span class="px-4 py-2 bg-neon-green-dark rounded-full text-sm font-medium text-black shadow-md skill-tag">UiPath</span>
-                <span class="px-4 py-2 bg-neon-green-dark rounded-full text-sm font-medium text-black shadow-md skill-tag">Microsoft Power Automate</span>
-                <span class="px-4 py-2 bg-neon-green-dark rounded-full text-sm font-medium text-black shadow-md skill-tag">RPA Development</span>
-                <span class="px-4 py-2 bg-neon-green-dark rounded-full text-sm font-medium text-black shadow-md skill-tag">Business Process Optimization</span>
-                <span class="px-4 py-2 bg-neon-green-dark rounded-full text-sm font-medium text-black shadow-md skill-tag">Digital Transformation</span>
-                <span class="px-4 py-2 bg-neon-green-dark rounded-full text-sm font-medium text-black shadow-md skill-tag">Cost Reduction</span>
+        <section id="skills" class="mb-20 p-10 section-bg-dark-1 rounded-xl shadow-2xl border border-neon-green">
+            <h2 class="text-4xl font-bold text-neon-green section-title mb-8">Skills</h2>
+            <div id="skillTagsContainer" class="flex flex-wrap gap-4">
+                <span class="skill-tag">Artificial Intelligence (AI)</span>
+                <span class="skill-tag">Workload Management</span>
+                <span class="skill-tag">Web Services API</span>
+                <span class="skill-tag">Automation Anywhere</span>
+                <span class="skill-tag">UiPath</span>
+                <span class="skill-tag">Microsoft Power Automate</span>
+                <span class="skill-tag">RPA Development</span>
+                <span class="skill-tag">Business Process Optimization</span>
+                <span class="skill-tag">Digital Transformation</span>
+                <span class="skill-tag">Cost Reduction</span>
             </div>
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="mb-16 p-8 section-bg-dark-2 rounded-lg shadow-xl border border-neon-green">
-            <h2 class="text-3xl font-bold text-neon-green section-title mb-6">Experience</h2>
-            <div class="space-y-8">
+        <section id="experience" class="mb-20 p-10 section-bg-dark-2 rounded-xl shadow-2xl border border-neon-green">
+            <h2 class="text-4xl font-bold text-neon-green section-title mb-8">Experience</h2>
+            <div class="space-y-10">
                 <!-- Finesse Global -->
-                <div class="border-b border-neon-green pb-6 last:border-b-0">
-                    <h3 class="text-2xl font-semibold text-neon-green">Robotic Process Automation Consultant</h3>
-                    <p class="text-lg text-gray-300">Finesse Global</p>
-                    <p class="text-md text-gray-400">January 2019 - Present (6 years 8 months)</p>
-                    <p class="text-md text-gray-400">Dubai, United Arab Emirates</p>
+                <div class="border-b border-neon-green pb-8 last:border-b-0">
+                    <h3 class="text-3xl font-semibold text-neon-green mb-2">Robotic Process Automation Consultant</h3>
+                    <p class="text-xl text-slate-200">Finesse Global</p>
+                    <p class="text-lg text-slate-300">January 2019 - Present (6 years 8 months)</p>
+                    <p class="text-lg text-slate-300">Dubai, United Arab Emirates</p>
                 </div>
                 <!-- National Bonds -->
-                <div class="border-b border-neon-green pb-6 last:border-b-0">
-                    <h3 class="text-2xl font-semibold text-neon-green">Robotic Process Automation Consultant</h3>
-                    <p class="text-lg text-gray-300">National Bonds</p>
-                    <p class="text-md text-gray-400">April 2025 - July 2025 (4 months)</p>
-                    <p class="text-md text-gray-400">Dubai, United Arab Emirates</p>
+                <div class="border-b border-neon-green pb-8 last:border-b-0">
+                    <h3 class="text-3xl font-semibold text-neon-green mb-2">Robotic Process Automation Consultant</h3>
+                    <p class="text-xl text-slate-200">National Bonds</p>
+                    <p class="text-lg text-slate-300">April 2025 - July 2025 (4 months)</p>
+                    <p class="text-lg text-slate-300">Dubai, United Arab Emirates</p>
                 </div>
                 <!-- Al-Futtaim -->
-                <div class="border-b border-neon-green pb-6 last:border-b-0">
-                    <h3 class="text-2xl font-semibold text-neon-green">Robotic Process Automation Consultant</h3>
-                    <p class="text-lg text-gray-300">Al-Futtaim</p>
-                    <p class="text-md text-gray-400">February 2023 - May 2023 (4 months)</p>
-                    <p class="text-md text-gray-400">Dubai, United Arab Emirates</p>
+                <div class="border-b border-neon-green pb-8 last:border-b-0">
+                    <h3 class="text-3xl font-semibold text-neon-green mb-2">Robotic Process Automation Consultant</h3>
+                    <p class="text-xl text-slate-200">Al-Futtaim</p>
+                    <p class="text-lg text-slate-300">February 2023 - May 2023 (4 months)</p>
+                    <p class="text-lg text-slate-300">Dubai, United Arab Emirates</p>
                 </div>
                 <!-- R Systems - RPA Developer -->
-                <div class="border-b border-neon-green pb-6 last:border-b-0">
-                    <h3 class="text-2xl font-semibold text-neon-green">RPA Developer</h3>
-                    <p class="text-lg text-gray-300">R Systems</p>
-                    <p class="text-md text-gray-400">September 2018 - December 2018 (4 months)</p>
-                    <p class="text-md text-gray-400">Chennai Area, India</p>
-                    <p class="text-md text-gray-400">Worked for Nokia in Chennai</p>
+                <div class="border-b border-neon-green pb-8 last:border-b-0">
+                    <h3 class="text-3xl font-semibold text-neon-green mb-2">RPA Developer</h3>
+                    <p class="text-xl text-slate-200">R Systems</p>
+                    <p class="text-lg text-slate-300">September 2018 - December 2018 (4 months)</p>
+                    <p class="text-lg text-slate-300">Chennai Area, India</p>
+                    <p class="text-lg text-slate-300">Worked for Nokia in Chennai</p>
                 </div>
                 <!-- R Systems - Project Trainee -->
-                <div class="border-b border-neon-green pb-6 last:border-b-0">
-                    <h3 class="text-2xl font-semibold text-neon-green">Project Trainee</h3>
-                    <p class="text-lg text-gray-300">R Systems</p>
-                    <p class="text-md text-gray-400">January 2018 - August 2018 (8 months)</p>
-                    <p class="text-md text-gray-400">Chennai, Tamil Nadu, India</p>
+                <div class="border-b border-neon-green pb-8 last:border-b-0">
+                    <h3 class="text-3xl font-semibold text-neon-green mb-2">Project Trainee</h3>
+                    <p class="text-xl text-slate-200">R Systems</p>
+                    <p class="text-lg text-slate-300">January 2018 - August 2018 (8 months)</p>
+                    <p class="text-lg text-slate-300">Chennai, Tamil Nadu, India</p>
                 </div>
                 <!-- InfoAxon Technologies Limited -->
-                <div class="border-b border-neon-green pb-6 last:border-b-0">
-                    <h3 class="text-2xl font-semibold text-neon-green">Summer Intern</h3>
-                    <p class="text-lg text-gray-300">InfoAxon Technologies Limited</p>
-                    <p class="text-md text-gray-400">June 2015 - July 2015 (2 months)</p>
-                    <p class="text-md text-gray-400">Noida, Uttar Pradesh, India</p>
+                <div class="border-b border-neon-green pb-8 last:border-b-0">
+                    <h3 class="text-3xl font-semibold text-neon-green mb-2">Summer Intern</h3>
+                    <p class="text-xl text-slate-200">InfoAxon Technologies Limited</p>
+                    <p class="text-lg text-slate-300">June 2015 - July 2015 (2 months)</p>
+                    <p class="text-lg text-slate-300">Noida, Uttar Pradesh, India</p>
                 </div>
             </div>
         </section>
 
         <!-- Education Section -->
-        <section id="education" class="mb-16 p-8 section-bg-dark-1 rounded-lg shadow-xl border border-neon-green">
-            <h2 class="text-3xl font-bold text-neon-green section-title mb-6">Education</h2>
-            <div class="space-y-8">
+        <section id="education" class="mb-20 p-10 section-bg-dark-1 rounded-xl shadow-2xl border border-neon-green">
+            <h2 class="text-4xl font-bold text-neon-green section-title mb-8">Education</h2>
+            <div class="space-y-10">
                 <!-- MIT University of Meghalaya -->
-                <div class="border-b border-neon-green pb-6 last:border-b-0">
-                    <h3 class="text-2xl font-semibold text-neon-green">Bachelor's degree, Computer Science & Engineering</h3>
-                    <p class="text-lg text-gray-300">MIT University of Meghalaya</p>
-                    <p class="text-md text-gray-400">With Specialization in Cloud Computing & Virtualization Technology (2012-2016)</p>
+                <div class="border-b border-neon-green pb-8 last:border-b-0">
+                    <h3 class="text-3xl font-semibold text-neon-green mb-2">Bachelor's degree, Computer Science & Engineering</h3>
+                    <p class="text-xl text-slate-200">MIT University of Meghalaya</p>
+                    <p class="text-lg text-slate-300">With Specialization in Cloud Computing & Virtualization Technology (2012-2016)</p>
                 </div>
                 <!-- Jat Senior Secondary School -->
-                <div class="border-b border-neon-green pb-6 last:border-b-0">
-                    <h3 class="text-2xl font-semibold text-neon-green">Intermediate, Physics, Chemistry & Mathematics</h3>
-                    <p class="text-lg text-gray-300">Jat Senior Secondary School, Kaithal</p>
-                    <p class="text-md text-gray-400">(2010-2011)</p>
+                <div class="border-b border-neon-green pb-8 last:border-b-0">
+                    <h3 class="text-3xl font-semibold text-neon-green mb-2">Intermediate, Physics, Chemistry & Mathematics</h3>
+                    <p class="text-xl text-slate-200">Jat Senior Secondary School, Kaithal</p>
+                    <p class="text-lg text-slate-300">(2010-2011)</p>
                 </div>
             </div>
         </section>
 
         <!-- Certifications Section -->
-        <section id="certifications" class="mb-16 p-8 section-bg-dark-2 rounded-lg shadow-xl border border-neon-green">
-            <h2 class="text-3xl font-bold text-neon-green section-title mb-6">Certifications</h2>
-            <ul class="list-disc list-inside text-lg text-gray-300 space-y-2">
+        <section id="certifications" class="mb-20 p-10 section-bg-dark-2 rounded-xl shadow-2xl border border-neon-green">
+            <h2 class="text-4xl font-bold text-neon-green section-title mb-8">Certifications</h2>
+            <ul class="list-disc list-inside text-xl text-slate-200 space-y-3">
                 <li class="list-item-glow">Automation Anywhere Certified Advanced RPA Professional (A2019) Certificate</li>
                 <li class="list-item-glow">Power Automate RPA Developer Associate</li>
                 <li class="list-item-glow">IQ Bot Developer</li>
@@ -269,9 +321,9 @@
         </section>
 
         <!-- Languages Section -->
-        <section id="languages" class="mb-16 p-8 section-bg-dark-1 rounded-lg shadow-xl border border-neon-green">
-            <h2 class="text-3xl font-bold text-neon-green section-title mb-6">Languages</h2>
-            <ul class="list-disc list-inside text-lg text-gray-300 space-y-2">
+        <section id="languages" class="mb-20 p-10 section-bg-dark-1 rounded-xl shadow-2xl border border-neon-green">
+            <h2 class="text-4xl font-bold text-neon-green section-title mb-8">Languages</h2>
+            <ul class="list-disc list-inside text-xl text-slate-200 space-y-3">
                 <li class="list-item-glow">English (Professional Working)</li>
                 <li class="list-item-glow">Punjabi (Professional Working)</li>
                 <li class="list-item-glow">Hindi (Native or Bilingual)</li>
@@ -279,18 +331,18 @@
         </section>
 
         <!-- Call to Action / Footer Contact -->
-        <section id="contact-footer" class="text-center p-8 section-bg-dark-2 rounded-lg shadow-xl border border-neon-green">
-            <h2 class="text-3xl font-bold text-neon-green mb-4">Let's Connect!</h2>
-            <p class="text-lg text-gray-300 mb-6">
+        <section id="contact-footer" class="text-center p-10 section-bg-dark-2 rounded-xl shadow-2xl border border-neon-green">
+            <h2 class="text-4xl font-bold text-neon-green mb-6">Let's Connect!</h2>
+            <p class="text-xl text-slate-200 mb-8">
                 I am looking to bring my skills to an organization that values innovation, automation, and continuous improvement. Let's connect if you are hiring for RPA Experts who deliver business results, not just the bots.
             </p>
-            <div class="flex justify-center space-x-4">
-                <a href="mailto:balkishan_singh@outlook.com" class="inline-flex items-center px-6 py-3 border border-neon-green rounded-full text-sm font-medium text-neon-green hover:bg-neon-green-light hover:text-black transition-all duration-300 shadow-lg">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 13h9a2 2 0 002-2V7a2 2 0 00-2-2H3a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            <div class="flex justify-center space-x-6">
+                <a href="mailto:balkishan_singh@outlook.com" class="inline-flex items-center px-8 py-4 border border-neon-green rounded-full text-lg font-medium text-neon-green hover:bg-neon-green-accent hover:text-dark-blue transition-all duration-300 shadow-xl">
+                    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 13h9a2 2 0 002-2V7a2 2 0 00-2-2H3a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     Email Me
                 </a>
-                <a href="https://www.linkedin.com/in/ibalkishan" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 border border-neon-green rounded-full text-sm font-medium text-neon-green hover:bg-neon-green-light hover:text-black transition-all duration-300 shadow-lg">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+                <a href="https://www.linkedin.com/in/ibalkishan" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-8 py-4 border border-neon-green rounded-full text-lg font-medium text-neon-green hover:bg-neon-green-accent hover:text-dark-blue transition-all duration-300 shadow-xl">
+                    <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
                     LinkedIn
                 </a>
             </div>
@@ -299,7 +351,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="py-8 text-center text-gray-400 text-sm border-t border-neon-green mt-12 section-bg-dark-1">
+    <footer class="py-10 text-center text-slate-300 text-md border-t border-neon-green mt-20 relative z-10 section-bg-dark-1 bg-opacity-70">
         <p>&copy; 2025 Balkishan Singh. All rights reserved.</p>
     </footer>
 
